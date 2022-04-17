@@ -3,7 +3,7 @@
  */
 import {Stack} from "./types";
 
-class ArrayStack<T = void> implements Stack<T> {
+class ArrayStack<T = any> implements Stack<T> {
     stack: T[] = []
 
     constructor(array?: T[]) {

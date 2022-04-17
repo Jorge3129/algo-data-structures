@@ -3,7 +3,7 @@ import {Stack} from "./types";
 /**
  *  In this implementation, I pretend that JS Array is a classic static array, like in Java
  */
-class JavaArrayStack<T = void> implements Stack<T> {
+class JavaArrayStack<T = any> implements Stack<T> {
     stack: T[] = []
 
     constructor(array?: T[]) {
@@ -11,22 +11,22 @@ class JavaArrayStack<T = void> implements Stack<T> {
     }
 
     push(value: T): void {
-        const newStack = new Array(this.stack.length + 1);  // create new array with incremented length
-        for (let i = 0; i < this.stack.length; i++) {                 // copy all elements from the old array
+        const newStack = new Array(this.stack.length + 1);
+        for (let i = 0; i < this.stack.length; i++) {
             newStack[i] = this.stack[i];
         }
-        newStack[newStack.length - 1] = value;                        // add our value at the last index
-        this.stack = newStack;                                        // assign new array to the class field
+        newStack[newStack.length - 1] = value;
+        this.stack = newStack;
     }
 
     pop(): T | null {
         if (this.isEmpty()) return null;
-        const value = this.stack[this.stack.length - 1];              // get the value at last index
-        const newStack = new Array(this.stack.length - 1);  // create new array with decremented length
-        for (let i = 0; i < newStack.length; i++) {                   // copy all but last elements from the old array
+        const value = this.stack[this.stack.length - 1];
+        const newStack = new Array(this.stack.length - 1);
+        for (let i = 0; i < newStack.length; i++) {
             newStack[i] = this.stack[i];
         }
-        this.stack = newStack;                                        // assign new array to the class field
+        this.stack = newStack;
         return value;
     }
 

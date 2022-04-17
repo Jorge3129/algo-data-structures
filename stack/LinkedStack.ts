@@ -3,19 +3,17 @@ import {Stack} from "./types";
 class MyNode<T = void> {
     value: T;
     prev: MyNode<T> | null = null;
-    next: MyNode<T> | null = null;
 
-    constructor(value: T, prev?: MyNode<T>, next?: MyNode<T>) {
+    constructor(value: T, prev: MyNode<T> | null) {
         this.value = value;
-        this.next = next || null;
-        this.prev = prev || null;
+        this.prev = prev;
     }
 }
 
 /**
- *  In this implementation, I used a doubly linked list
+ *  In this implementation, I used a linked list
  */
-class LinkedStack<T = void> implements Stack<T> {
+class LinkedStack<T = any> implements Stack<T> {
     top: MyNode<T> | null = null;
     mySize: number = 0;
 
@@ -24,25 +22,14 @@ class LinkedStack<T = void> implements Stack<T> {
 
     push(value: T): void {
         this.mySize++;
-        if (!this.top) {
-            this.top = new MyNode<T>(value);
-            return;
-        }
-        // now the field "next" of this.top references
-        // the new object, whose field "prev" references the current top
-        this.top.next = new MyNode<T>(value, this.top);
-        // and now this.top references the new object, while the old one is kept
-        // as the current one's "prev"
-        this.top = this.top.next;
+        this.top = new MyNode<T>(value, this.top);
     }
 
     pop(): T | null {
         if (!this.top) return null;
         this.mySize--;
         const value = this.top.value;
-        // shift the reference to previous object, then delete its "next" reference
         this.top = this.top.prev;
-        if (this.top) this.top.next = null;
         return value;
     }
 
@@ -71,3 +58,12 @@ class LinkedStack<T = void> implements Stack<T> {
 }
 
 export default LinkedStack;
+
+/* TESTS */
+const linkedStack = new LinkedStack();
+console.log(linkedStack.getStack())
+linkedStack.push(1);
+console.log(linkedStack.getStack())
+console.log(linkedStack.pop())
+console.log(linkedStack.peek())
+console.log(linkedStack.pop())
