@@ -23,6 +23,13 @@ stacks.forEach(stack => {
     console.log(stack.getStack());
 })
 
+console.log("\nSIZE\n")
+
+stacks.forEach(stack => {
+    console.log(`${stack.constructor.name}:`);
+    console.log(stack.size());
+})
+
 // PEEK
 
 console.log("\nPEEK\n")

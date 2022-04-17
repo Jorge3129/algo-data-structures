@@ -39,7 +39,7 @@ class LinkedStack<T = any> implements Stack<T> {
     }
 
     size(): number {
-        return 0;
+        return this.mySize;
     }
 
     isEmpty(): boolean {
@@ -60,10 +60,13 @@ class LinkedStack<T = any> implements Stack<T> {
 export default LinkedStack;
 
 /* TESTS */
-const linkedStack = new LinkedStack();
-console.log(linkedStack.getStack())
-linkedStack.push(1);
-console.log(linkedStack.getStack())
-console.log(linkedStack.pop())
-console.log(linkedStack.peek())
-console.log(linkedStack.pop())
+const test = () => {
+    const linkedStack = new LinkedStack();
+    console.log(linkedStack.getStack())
+    linkedStack.push(1);
+    console.log(linkedStack.getStack())
+    console.log(linkedStack.pop())
+    console.log(linkedStack.peek())
+    console.log(linkedStack.pop())
+}
+
