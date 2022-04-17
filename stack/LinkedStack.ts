@@ -1,6 +1,6 @@
 import {Stack} from "./types";
 
-class MyNode<T = void> {
+class MyNode<T = any> {
     value: T;
     prev: MyNode<T> | null = null;
 
