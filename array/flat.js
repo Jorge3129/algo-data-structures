@@ -27,3 +27,5 @@ console.log(arr2.flat(2));
 console.log(flat1(arr2, 2));
 console.log(flat2(arr2, 2));
 // expected output: [0, 1, 2, [3, 4]]
+// 00:11 - 18 - first impl
+// 00:20 - 26 - second impl
