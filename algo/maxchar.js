@@ -1,4 +1,8 @@
 const str = "Archeology"
+const groupBy = require('array.prototype.groupby');
+Array.prototype.groupBy = function (callbackFn){
+    return groupBy(this, callbackFn)
+}
 
 const maxChar = (word) => {
     const newWord = word.toLowerCase()
@@ -28,8 +32,18 @@ const maxChar2 = (word) => {
 }
 
 const maxChar3 = (word) => {
-    const newWord = word.toLowerCase()
-    return 0;
+    const newWord = word.toLowerCase();
+    const map = [...newWord]
+        .map(ch => ({letter: ch}))
+        .groupBy(({letter}) => letter)
+
+    return Object.keys(map)
+        .map(key => [key, map[key].length])
+        .reduce((acc, val) => {
+            return acc[1] < val[1] ? val : acc;
+        })[0]
 }
 
-console.log(maxChar2("gggfff11111ffaoaoao"))
+const string = "gggfff11111ffffaoaaaaaaaoao";
+console.log(maxChar2(string))
+console.log(maxChar3(string))
