@@ -1,4 +1,4 @@
 # dependencies
 /node_modules
-/tests2/node_modules
+/other/tests2/node_modules
 /.idea
